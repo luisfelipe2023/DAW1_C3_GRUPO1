@@ -13,6 +13,11 @@ CREATE TABLE usuario (
 	CONSTRAINT users_pk PRIMARY KEY (idusuario)
 );
 
+CREATE TABLE rol (
+	idrol INT auto_increment NOT NULL,
+	nomrol varchar(300) NULL,
+	CONSTRAINT roles_pk PRIMARY KEY (idrol)
+);
 
 CREATE TABLE usuario_rol (
     idusuario INT NOT NULL,
@@ -20,15 +25,6 @@ CREATE TABLE usuario_rol (
     PRIMARY KEY (idusuario, idrol),
     FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
     FOREIGN KEY (idrol) REFERENCES rol(idrol)
-);
-
-
-CREATE TABLE usuario_rol (
-	idusuario INT NOT NULL,
-	idrol INT NOT NULL,
-	CONSTRAINT user_role_pk PRIMARY KEY (idusuario, idrol),
-	CONSTRAINT user_role_FK FOREIGN KEY (idusuario) REFERENCES bdventas.usuario(idusuario),
-	CONSTRAINT user_role_FK_1 FOREIGN KEY (idrol) REFERENCES bdventas.rol(idrol)
 );
 
 CREATE TABLE Autor
