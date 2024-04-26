@@ -8,11 +8,9 @@
     <style>
         /* Estilos personalizados */
         .navbar {
-            background-color: #f8f9fa; /* Cambia el color de fondo de la barra de navegación */
-            border-bottom: 1px solid #dee2e6; /* Añade una línea inferior */
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
         }
-
-        /* Alinea el mensaje de bienvenida al centro */
         .welcome-message {
             text-align: center;
             margin-top: 20px;
@@ -40,7 +38,7 @@
                         <li><a class="dropdown-item" href="#"></a>Cambiar Password</li>
                         <li><a class="dropdown-item" href="#">Mantenimiento</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/auth/login}">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
                     </ul>
                 </li>
 

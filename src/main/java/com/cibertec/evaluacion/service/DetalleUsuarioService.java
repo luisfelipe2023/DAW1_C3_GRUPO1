@@ -23,6 +23,9 @@ public class DetalleUsuarioService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = iUsuarioService.findUserByNomUsuario(username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException("Usuario no encontrado: " + username);
+        }
         return autenticacionUsuario(usuario,
                 obtenerListaRolesUsuario(usuario.getRoles()));
     }
