@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header text-bg-danger">
+        Mantenimiento de usuarios:
+    </div>
+    <div class="card-body">
+        <button id="btnagregar" type="button" class="btn btn-primary">Agregar</button>
+        <hr />
+        <div id="divmensaje"></div>
+        <table id="tblusuario" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Email</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Actualizar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario : ${listaUsuarios}">
+                <td th:text="${usuario.nombres}"></td>
+                <td th:text="${usuario.apellidos}"></td>
+                <td th:text="${usuario.nomusuario}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:text="${usuario.activo}"></td>
+                <td>
+                    <button type="button" class="btn btn-primary btnactualizar"
+                            th:data-usuid="${usuario.idusuario}"
+                    >Actualizar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal registro y actualización de producto -->
+<div class="modal fade" id="modalusuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnombre"
+                           placeholder="name@example.com">
+                    <label for="txtnombre">Nombres</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtapellido"
+                           placeholder="name@example.com">
+                    <label for="txtapellido">Apellidos</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtemail"
+                           placeholder="name@example.com">
+                    <label for="txtemail">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtusuario"
+                           placeholder="name@example.com">
+                    <label for="txtusuario">Usuario</label>
+                </div>
+                <div class="mb-3" id="divmsgpassword">
+                    <label class="form-label">El password será enviado por correo al email indicado en este formulario.</label>
+                </div>
+                <div class="form-check form-switch" id="switchusuario">
+                    <input class="form-check-input" type="checkbox"
+                           role="switch" id="cbactivo">
+                    <label class="form-check-label" for="cbactivo">
+                        Activo</label>
+                </div>
+                <input type="hidden" id="hddidusuario" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnguardar">Guardar</button>
+                <button type="button" class="btn btn-success" id="btnenviar">Enviar Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
