@@ -30,7 +30,7 @@ public class UsuarioService implements IUsuarioService  {
     @Override
     public Usuario guardarUsuario(Usuario usuario){
         // Se encripta la contraseña antes de guardarla en la base de datos
-        usuario.setPassword(bCryptPasswordEncoder.encode("123456"));
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
         usuario.setActivo(true);
         // Se busca el rol "ADMIN" que se asignará al usuario
         Rol usuarioRol = rolRepository.findByNomrol("ADMIN");
@@ -61,6 +61,7 @@ public class UsuarioService implements IUsuarioService  {
                 usuario.getActivo(), usuario.getIdusuario() // Obtiene el estado de activación y el ID del usuario
         );
     }
+
 
 
 }
