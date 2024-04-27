@@ -21,7 +21,7 @@ import java.util.Set;
 public class DetalleUsuarioService implements UserDetailsService {
     private IUsuarioService iUsuarioService;
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //El método ya carga correctamente(arreglado)
         Usuario usuario = iUsuarioService.findUserByNomUsuario(username);
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuario no encontrado: " + username);
@@ -30,7 +30,7 @@ public class DetalleUsuarioService implements UserDetailsService {
                 obtenerListaRolesUsuario(usuario.getRoles()));
     }
 
-    private List<GrantedAuthority> obtenerListaRolesUsuario(Set<Rol> listRoles){
+    private List<GrantedAuthority> obtenerListaRolesUsuario(Set<Rol> listRoles){ //El método ya carga correctamente(arreglado)
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
         for (Rol rol : listRoles){
             grantedAuthorityList.add(new SimpleGrantedAuthority(rol.getNomrol()));
