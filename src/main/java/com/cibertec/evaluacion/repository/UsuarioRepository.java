@@ -22,4 +22,8 @@ public interface UsuarioRepository extends
                            @Param("apellidos")String apellidos,
                            @Param("activo")boolean activo,
                            @Param("idusuario")int idusuario);
+
+
+    @Query("SELECT COUNT(u) > 0 FROM Usuario u WHERE u.nomusuario = ?1")
+    boolean existsByNomusuario(String nomusuario);
 }
