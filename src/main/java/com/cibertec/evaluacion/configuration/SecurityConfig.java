@@ -35,7 +35,7 @@ public class SecurityConfig  {
                                         .authenticated()
                 ).formLogin(
                         login->
-                                login.loginPage("/auth/login")
+                                login.loginPage("/auth/login") //Ruta del login
                                         .defaultSuccessUrl("/auth/login-success")
                                         .usernameParameter("nomusuario")
                                         .passwordParameter("password")
