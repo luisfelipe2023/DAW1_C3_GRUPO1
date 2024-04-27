@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name="rol")
 public class Rol {
+    // Identificador único del usuario
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idrol;
