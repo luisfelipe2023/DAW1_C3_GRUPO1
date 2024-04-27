@@ -24,7 +24,8 @@ public class SecurityConfig  {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         auth ->
-                                auth.requestMatchers("/auth/login","/auth/registrar",
+                                auth.requestMatchers("/auth/login", "/auth/registrar",
+                                                "/auth/cambiar-contrasena", // Permitir acceso a la página de cambio de contraseña
                                                 "/resources/**",
                                                 "/static/**",
                                                 "/css/**",

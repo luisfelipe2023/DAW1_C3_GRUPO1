@@ -63,5 +63,18 @@ public class UsuarioService implements IUsuarioService  {
     }
 
 
+    public Usuario obtenerUsuarioPorNombreUsuario(String nombreUsuario) {
+        return usuarioRepository.findByNomusuario(nombreUsuario);
+    }
+
+    // Método para verificar la contraseña del usuario
+    public boolean verificarContrasena(Usuario usuario, String contrasena) {
+        return usuario.getPassword().equals(contrasena);
+    }
+
+    // Método para cambiar la contraseña del usuario
+    public void cambiarContrasena(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
 
 }
