@@ -5,17 +5,6 @@
     <title>Title</title>
     <link th:href="@{/css/bootstrap/bootstrap.css}" rel="stylesheet" />
     <script th:src="@{/js/bootstrap/bootstrap.bundle.js}" type="text/javascript"></script>
-    <style>
-        /* Estilos personalizados */
-        .navbar {
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #dee2e6;
-        }
-        .welcome-message {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -50,9 +39,26 @@
         </div>
     </div>
 </nav>
-
-<div class="welcome-message">
-    <h1>Bienvenido, <span th:text="${session.nomusuario}"></span></h1>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card w-75">
+        <div class="card-header bg-dark text-white">
+            CAMBIAR CONTRASEÑA
+        </div>
+        <div class="card-body">
+            <form th:action="@{/auth/cambiar-contrasena}" method="post">
+                <div class="mb-3">
+                    <label for="contrasenaActual" class="form-label">Contraseña Actual:</label>
+                    <input type="password" id="contrasenaActual" name="contrasenaActual" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="nuevaContrasena" class="form-label">Nueva Contraseña:</label>
+                    <input type="password" id="nuevaContrasena" name="nuevaContrasena" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">CAMBIAR</button>
+            </form>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

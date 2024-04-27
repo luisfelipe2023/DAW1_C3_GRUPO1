@@ -13,4 +13,8 @@ public interface IUsuarioService {
     List<Usuario> listarUsuarios();
     Usuario obtenerUsuarioxId(int id);
     void actualizarUsuario(Usuario usuario);
+
+    Usuario obtenerUsuarioPorNombreUsuario(String nombreUsuario);
+    boolean verificarContrasena(Usuario usuario, String contrasena);
+    void cambiarContrasena(Usuario usuario);
 }

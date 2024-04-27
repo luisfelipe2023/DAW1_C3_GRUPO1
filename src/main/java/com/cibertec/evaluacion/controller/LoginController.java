@@ -10,10 +10,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @AllArgsConstructor
 @Controller
@@ -56,5 +56,36 @@ public class LoginController {
     public String registrarCuentaDeUsuario(@ModelAttribute("usuario") Usuario registroDTO) {
         usuarioService.guardarUsuario(registroDTO);
         return "redirect:/auth/login";
+    }
+
+
+    @GetMapping("/cambiar-contrasena")
+    public String mostrarFormularioCambiarContrasena() {
+        return "backoffice/auth/form-cambiar-contrasena";
+    }
+
+
+    @PostMapping("/cambiar-contrasena")
+    public String cambiarContrasena(@RequestParam("contrasenaActual") String contrasenaActual,
+                                    @RequestParam("nuevaContrasena") String nuevaContrasena,
+                                    Principal principal) {
+
+        String username = principal.getName();
+
+        Usuario usuario = usuarioService.findUserByNomUsuario(username);
+
+        if (!usuario.getPassword().equals(contrasenaActual)) {
+            return "redirect:/auth/cambiar-contrasena?error=wrongCurrentPassword";
+        }
+
+        if (nuevaContrasena.equals(contrasenaActual)) {
+            return "redirect:/auth/cambiar-contrasena?error=newPasswordSameAsCurrent";
+        }
+
+        usuario.setPassword(nuevaContrasena);
+        usuarioService.cambiarContrasena(usuario);
+
+
+        return "redirect:/auth/dashboard";
     }
 }
