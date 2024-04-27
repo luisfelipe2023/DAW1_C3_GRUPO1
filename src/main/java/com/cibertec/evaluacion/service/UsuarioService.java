@@ -2,13 +2,10 @@ package com.cibertec.evaluacion.service;
 
 import com.cibertec.evaluacion.model.bd.Rol;
 import com.cibertec.evaluacion.model.bd.Usuario;
-import com.cibertec.evaluacion.model.dto.UsuarioRegistroDTO;
 import com.cibertec.evaluacion.repository.RolRepository;
 import com.cibertec.evaluacion.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -66,18 +63,5 @@ public class UsuarioService implements IUsuarioService  {
     }
 
 
-    @Override
-    public boolean existeNomUsuario(String nomusuario) {
-        return usuarioRepository.existsByNomusuario(nomusuario);
-    }
-
-    @Override
-    public Usuario guardar(UsuarioRegistroDTO registroDTO) {
-        Usuario usuario = new Usuario(registroDTO.getNombres(),
-                registroDTO.getApellidos(), registroDTO.getEmail(),
-                registroDTO.getNomusuario(), registroDTO.getPassword(),
-                Arrays.asList(new Rol("ADMIN")));
-        return usuarioRepository.save(usuario);
-    }
 
 }

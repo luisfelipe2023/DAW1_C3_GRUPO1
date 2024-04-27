@@ -1,7 +1,6 @@
 package com.cibertec.evaluacion.controller;
 
 import com.cibertec.evaluacion.model.bd.Usuario;
-import com.cibertec.evaluacion.model.dto.UsuarioRegistroDTO;
 import com.cibertec.evaluacion.model.dto.UsuarioSecurity;
 import com.cibertec.evaluacion.service.IUsuarioService;
 import com.cibertec.evaluacion.service.UsuarioService;
@@ -11,7 +10,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +55,6 @@ public class LoginController {
     @PostMapping("/registrar")
     public String registrarCuentaDeUsuario(@ModelAttribute("usuario") Usuario registroDTO) {
         usuarioService.guardarUsuario(registroDTO);
-        return "redirect:/auth/frmlogin";
+        return "redirect:/auth/login";
     }
 }
