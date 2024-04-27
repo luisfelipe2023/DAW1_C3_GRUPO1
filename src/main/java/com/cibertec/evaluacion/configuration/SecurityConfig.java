@@ -36,7 +36,7 @@ public class SecurityConfig  {
                 ).formLogin(
                         login->
                                 login.loginPage("/auth/login") //Ruta del login
-                                        .defaultSuccessUrl("/auth/login-success")
+                                        .defaultSuccessUrl("/auth/login-success")  // Ruta del login success
                                         .usernameParameter("nomusuario")
                                         .passwordParameter("password")
                 ).logout(
