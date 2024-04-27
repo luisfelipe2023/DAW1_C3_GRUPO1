@@ -24,7 +24,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(){
         return "backoffice/auth/frmlogin";
-    }
+    } //Ruta del HTML
     @GetMapping("/login-success")
     public String loginSuccess(){
         return "redirect:/auth/dashboard";
