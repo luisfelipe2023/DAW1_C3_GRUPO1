@@ -1,6 +1,6 @@
-Create Database BDGrupo1
+Create Database BDGrupo1;
 
-use BDGrupo1
+use BDGrupo1;
 
 CREATE TABLE usuario (
 	idusuario INT auto_increment NOT NULL,
@@ -46,3 +46,5 @@ CREATE TABLE Publicacion
  PRIMARY KEY (IdPublicacion),
  FOREIGN KEY (IdAutor) REFERENCES Autor(IdAutor)
  );
+ 
+ 
